@@ -124,3 +124,62 @@ function isFish (pet: Fish | Bird): pet is Fish{
 //     pet.fly()
 // }
 
+//Assertion Functions : types being narrowed through this method
+//Discriminated Unions
+interface Shape {
+    kind: 'circle' | 'square';
+    radius?: number;
+    sideLength?: number; 
+}
+
+function handleShape(shape:Shape){
+    if(shape.kind === 'square'){
+        return shape.sideLength! * 2
+    }
+    //or
+    // if(shape.kind === 'square' && shape.sideLength !=null){
+    //     return shape.sideLength * 2
+    // }
+
+}
+
+//we can still do better by separating the interface 
+interface Circle {
+    kind:'circle';
+    radius: number;
+}
+interface Square {
+    kind:'sqaure';
+    sideLength: number;
+}
+interface Triangle {
+    kind:'triangle';
+    sideLength: number;
+}
+
+type Shape2 = Circle | Square 
+
+const handleShape2 = (shape: Shape2) => {
+    if(shape.kind === 'circle')
+        return shape.radius * 2
+
+}
+//same with switch as well
+function getArea(shape:Shape2){
+    switch(shape.kind){
+        case 'circle':
+            return Math.PI * shape.radius ** 2
+        
+        case 'sqaure':
+            return shape.sideLength ** 2
+         
+        
+            default: //The never type && there wont be any error if all the cases are handled but introducing a new member will cause error 
+                const _exhaustiveCheck : never = shape;
+                return _exhaustiveCheck
+
+    }
+};
+
+//
+
