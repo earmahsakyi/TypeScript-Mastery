@@ -30,7 +30,7 @@ myFunc.description = 'BurnaBoy';
 doSomething(myFunc)
 
 //javascripts object that can be called without new
-
+//Construct signatures
 interface CallorConstruct{
     (n?:number):string;
     new (s:string): Date
@@ -44,3 +44,25 @@ const fn = (ctor:CallorConstruct) => {
 
 
 fn(Date);
+
+//Generic functions
+function firstElement(arr: any[]){
+    return arr[0];// would be better returning the type of the array elements 
+
+}
+
+function firstElement2<Type>(arr: Type[]): Type | undefined {
+    return arr[0];// would be better returning the type of the array elements 
+    
+}
+const s = firstElement2(['a','b']);
+const z = firstElement2([2,3]);
+const a = firstElement2([]);
+
+//inference
+function map<Input,Output>(arr: Input[],func:(arg: Input)=> Output){
+    return arr.map(func);
+}
+
+const parsed = map([1,2],(n)=> console.log(n));
+
