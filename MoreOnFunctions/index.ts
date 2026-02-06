@@ -86,10 +86,5 @@ const arr = combine<string | number>(['hello'],[1,2,3])
 
 //optional parameters
 function f(x?: number){
-    if(x){
-        return x.toString()
-    }else {
-        return null 
-    }
-
+  return x?.toString()
 }
