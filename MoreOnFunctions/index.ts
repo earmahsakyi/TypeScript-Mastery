@@ -66,3 +66,30 @@ function map<Input,Output>(arr: Input[],func:(arg: Input)=> Output){
 
 const parsed = map([1,2],(n)=> console.log(n));
 
+//Constraints
+function longest<Type extends {length: number}>(a: Type, b: Type){
+    if(a.length >= b.length){
+        return a
+    }else {
+        return b
+    }
+}
+const longerArray = longest([1,2],[1,2,3])
+const longerstring = longest('alice','burna')
+
+//specifying type Arguments
+function combine<Type>(arr1: Type[],arr2:Type[]): Type[]{
+    return arr1.concat(arr2)
+}
+
+const arr = combine<string | number>(['hello'],[1,2,3])
+
+//optional parameters
+function f(x?: number){
+    if(x){
+        return x.toString()
+    }else {
+        return null 
+    }
+
+}
