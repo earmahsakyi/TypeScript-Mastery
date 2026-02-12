@@ -98,7 +98,45 @@ function makeDate(mOrTimestamp: number, d?: number, y?: number): Date {
   } else {
     return new Date(mOrTimestamp);
   }
+  
 }
 const d1 = makeDate(12345678);
 const d2 = makeDate(5, 5, 5);
-const d3 = makeDate(1, 3,);//No overload expects 2 arguments, but overloads do exist that expect either 1 or 3 arguments.
+const d3 = makeDate(1, 3,2);//No overload expects 2 arguments, but overloads do exist that expect either 1 or 3 arguments.
+
+//declaring 'this' in a function
+const user = {
+    id: 123,
+    admin: false,
+    becomeAdmin: function (){
+        this.admin = true;
+    }
+};
+
+//Other types to know about
+//void
+function noop(){
+    return;
+}
+
+//functions with unknown return types
+function safeParse(s:string): unknown{
+    return JSON.parse(s)
+}
+
+
+//never 
+//some functions never returns a value
+function fail(msg: string): never {
+    throw new Error(msg)
+};
+
+function fn1(x: string | number) {
+  if (typeof x === "string") {
+    // do something
+  } else if (typeof x === "number") {
+    // do something else
+  } else {
+    x; // has type 'never'!
+  }
+}
