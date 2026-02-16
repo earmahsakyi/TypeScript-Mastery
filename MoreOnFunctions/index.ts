@@ -139,4 +139,48 @@ function fn1(x: string | number) {
   } else {
     x; // has type 'never'!
   }
+};
+
+//Rest parameters
+function multiply(n: number, ...m: number[]){
+    return m.map(x => n * x)
 }
+
+multiply(10,2,4,4);
+
+
+//parameter destructuring
+function sum({a, b, c}:{a: number, b:number, c: number}){
+    console.log(a + b + c)
+}
+
+//using a name type as well
+type ABC = {
+    a: number;
+    b: number;
+    c:number;
+};
+function sum1({a, b, c}:ABC){
+    console.log(a + b + c)
+};
+
+//Assignability of Functions
+ // Return type Void
+
+ type voidFunc = () => void;
+ 
+const f1: voidFunc = () => {
+  return true;
+};
+ 
+const f2: voidFunc = () => true;
+ 
+const f3: voidFunc = function () {
+  return true;
+};
+
+const v1 = f1();
+ 
+const v2 = f2();
+ 
+const v3 = f3();
