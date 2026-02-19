@@ -12,11 +12,11 @@
 // let myName: string = "Alice";
 
 //parameter type annotation
-function  greet (name:string){
+function  welcomeMessage (name:string){
 console.log(`Hello ${name.toUpperCase()} !!`)
 }
 
-greet('Burna')
+welcomeMessage('Burna')
 
 //Return type annotation
  function getFavNum (): number {
@@ -146,7 +146,7 @@ interface Options {
 function configure(x: Options | "auto"){
     //
 }
- configure({width:100})
+ configure({width:100}) 
  configure("auto")
 
 //literal infereneces
