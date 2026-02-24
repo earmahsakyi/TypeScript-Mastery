@@ -69,3 +69,31 @@ function evict(home: Home) {
 //   };
 }
 
+//index signature
+interface stringArray {
+    [index: number]: string;
+};
+
+//When accessed using a number, return a string.
+const array: stringArray = ["a", "b", "c"];
+array[1]
+
+interface NumberDictionary {
+  [index: string]: number | string;
+
+  length: number; // ok
+  name: string;   // ❌ error
+}
+
+interface ApiResponse1 {
+  [userId: string]: {
+    name: string;
+    age: number;
+  };
+}
+
+const users: ApiResponse1 = {
+  "u1": { name: "Alice", age: 20 },
+  "u2": { name: "Bob", age: 25 }
+};
+
