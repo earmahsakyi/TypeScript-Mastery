@@ -97,3 +97,17 @@ const users: ApiResponse1 = {
   "u2": { name: "Bob", age: 25 }
 };
 
+//excess property checks
+interface SquareConfig {
+    color?:string;
+    width?: number;
+};
+
+function createSquare(config: SquareConfig): {color: string; area: number}{
+    return {
+        color: config.color || 'red',
+        area : config.width ? config.width * config.width : 20
+    }
+};
+
+let mySquare = createSquare({width: 100,opacity: 0.5} as SquareConfig)
