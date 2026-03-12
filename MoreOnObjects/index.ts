@@ -111,3 +111,37 @@ function createSquare(config: SquareConfig): {color: string; area: number}{
 };
 
 let mySquare = createSquare({width: 100,opacity: 0.5} as SquareConfig)
+
+//Extending types
+interface BasicAddress {
+    name?: string;
+    street: string;
+    city: string;
+    country: string;
+    postalCode: string;
+}
+
+//interface's' can also extends from multiple types
+interface AddressWithUnit extends BasicAddress,SquareConfig {
+    unit: string;
+}
+
+//insertion types
+interface colorful {
+color: string;
+}
+
+interface Mycircle {
+    radius: number
+}
+
+type colorfulCircle = Mycircle & colorful;
+
+//generic object types
+interface Box<Type> {
+    contents: Type
+}
+let box :Box<number> = {
+    contents: 12
+}
+box.contents
